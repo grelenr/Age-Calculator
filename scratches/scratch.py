@@ -6,8 +6,8 @@ from PIL import ImageTk, Image
 
 root = Tk()
 root.geometry("700x500")
-root.title("Age Calculator")
-
+root.title("Updated Age Calculator")
+git
 photo = ImageTk.PhotoImage(Image.open("oldcalculator.jpg"))
 myimage = Label(root, image=photo)
 myimage.grid(row=0, column=1)
