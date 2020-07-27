@@ -6,8 +6,7 @@ from PIL import ImageTk, Image
 
 root = Tk()
 root.geometry("700x500")
-root.title("Updated Age Calculator")
-git
+root.title("Age Calculator")
 photo = ImageTk.PhotoImage(Image.open("oldcalculator.jpg"))
 myimage = Label(root, image=photo)
 myimage.grid(row=0, column=1)
@@ -36,6 +35,11 @@ yearEntry.grid(row=2, column=1, pady=10)
 monthEntry.grid(row=3, column=1, pady=10)
 dayEntry.grid(row=4, column=1, pady=10)
 Button(text="Calculate age", fg="red", command=calculateAge).grid(row=5, column=1, pady=10)
+
+#Okay, so here I have added the button for calculating the zodiac sign, but it is not functional yet
+
+Button(text="Zodiac Sign", fg="purple",).grid(row=6, column=1, pady=10)
+
 
 
 root.mainloop()
