@@ -1,3 +1,6 @@
+#I really don't need this scratch anymore, I originally thought it made sense to run the zodiac feature entirely separately
+#Clearly, it does not work.
+
 from tkinter import *
 
 from datetime import date
@@ -7,10 +10,10 @@ from PIL import ImageTk, Image
 root = Tk()
 root.geometry("700x500")
 root.title("Age Calculator")
+root.mainloop()
 
-
-month = input("Input month of birth (e.g. march, july etc): ")
-day = int(input("Input day of birth: "))
+month = input("Input your month of birth (e.g. march, july etc): ")
+day = int(input("Input your day of birth: "))
 
 if month == 'december':
 	astro_sign = 'Sagittarius' if (day < 22) else 'capricorn'
@@ -40,7 +43,7 @@ elif month == 'november':
 print("Your Astrological sign is :",astro_sign)
 
 
-root.geometry("700x500")
+root.geometry("1400x1000")
 root.title("Age Calculator")
 photo = ImageTk.PhotoImage(Image.open("mei-featherstone-WlvziDjFkwA-unsplash.jpg"))
 myimage = Label(root, image=photo)
