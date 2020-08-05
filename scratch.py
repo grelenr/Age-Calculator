@@ -8,11 +8,11 @@ from PIL import ImageTk, Image
 from tkinter import Entry
 
 
-root = Tk()
-root.geometry("700x500")
-root.title("Age Calculator")
+window = Tk()
+window.geometry("700x500")
+window.title("Age Calculator")
 photo = ImageTk.PhotoImage(Image.open("zodiacpic.jpg"))
-myimage = Label(root, image=photo)
+myimage = Label(window, image=photo)
 myimage.grid(row=0, column=1)
 
 # Originally I had 2 functions, calculateAge() and calculateZodiac(). I tried running them consecutively, it did not work.
@@ -72,10 +72,10 @@ nameValue = StringVar()
 yearValue = StringVar()
 monthValue = StringVar()
 dayValue = StringVar()
-nameEntry = Entry(root, textvariable=nameValue)
-yearEntry = Entry(root, textvariable=yearValue)
-monthEntry: Entry = Entry(root, textvariable=monthValue)
-dayEntry = Entry(root, textvariable=dayValue)
+nameEntry = Entry(window, textvariable=nameValue)
+yearEntry = Entry(window, textvariable=yearValue)
+monthEntry: Entry = Entry(window, textvariable=monthValue)
+dayEntry = Entry(window, textvariable=dayValue)
 nameEntry.grid(row=1, column =1,pady=10)
 yearEntry.grid(row=2, column=1, pady=10)
 monthEntry.grid(row=3, column=1, pady=10)
@@ -83,4 +83,4 @@ dayEntry.grid(row=4, column=1, pady=10)
 
 Button(text="Calculate age and Zodiac Sign", fg="purple", command=calculateAge).grid(row=5, column=1, pady=10)
 
-root.mainloop()
+window.mainloop()
