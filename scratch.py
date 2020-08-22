@@ -1,4 +1,3 @@
-
 from datetime import date
 
 from tkinter import *
@@ -7,18 +6,12 @@ from PIL import ImageTk, Image
 
 from tkinter import Entry
 
-
 window = Tk()
 window.geometry("700x500")
-window.title("Age Calculator")
+window.title("Zodiac and Age Calculator")
 photo = ImageTk.PhotoImage(Image.open("zodiacpic.jpg"))
 myimage = Label(window, image=photo)
 myimage.grid(row=0, column=1)
-
-# Originally I had 2 functions, calculateAge() and calculateZodiac(). I tried running them consecutively, it did not work.
-# Overall I just simplified and made everything more unified (ex. months are all ints now rather than strings for Zodiac)
-# Removed the zodiac month/day "input" code. It was making the user input info in command line rather than the app window
-# Added monthEntry.get() as a value for the variable 'month' and dayEntry.get() for 'day'
 
 """
 Originally I had 2 functions, calculateAge() and calculateZodiac(). I tried running them consecutively, it did not work.
@@ -27,12 +20,24 @@ Removed the zodiac month/day "input" code. It was making the user input info in 
 Added monthEntry.get() as a value for the variable 'month' and dayEntry.get() for 'day'
 """
 
-def calculateAge():
+"""
+Originally I had 2 functions, calculateAge() and calculateZodiac(). I tried running them consecutively, it did not work.
+Overall I just simplified and made everything more unified (ex. months are all ints now rather than strings for Zodiac)
+Removed the zodiac month/day "input" code. It was making the user input info in command line rather than the app window
+Added monthEntry.get() as a value for the variable 'month' and dayEntry.get() for 'day'
+"""
+
+
+def calculate_age():
     today = date.today()
-    birthDate = date(int(yearEntry.get()), int(monthEntry.get()), int(dayEntry.get()))
+    birth_date = date(int(yearEntry.get()), int(monthEntry.get()), int(dayEntry.get()))
     month = int(monthEntry.get())
     day = int(dayEntry.get())
-    age = today.year - birthDate.year - ((today.month, today.day) < (birthDate.month, birthDate.day))
+    age = today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
+    get_zodiac(month, day, age)
+
+
+def get_zodiac(month, day, age):
     if month == 12:
         astro_sign = 'Sagittarius' if (day < 22) else 'Capricorn'
     elif month == 1:
@@ -58,11 +63,10 @@ def calculateAge():
     elif month == 11:
         astro_sign = 'Scorpio' if (day < 22) else 'Sagittarius'
 
-
-    # updated the button to include the Zodiac sign
     # updated the button to include the Zodiac sign
 
     Label(text=f"{nameValue.get()} your age is {age} and your Zodiac sign is {astro_sign}").grid(row=6, column=1)
+
 
 Label(text="Name").grid(row=1, column=0, padx=90)
 Label(text="Year").grid(row=2, column=0)
@@ -76,11 +80,11 @@ nameEntry = Entry(window, textvariable=nameValue)
 yearEntry = Entry(window, textvariable=yearValue)
 monthEntry: Entry = Entry(window, textvariable=monthValue)
 dayEntry = Entry(window, textvariable=dayValue)
-nameEntry.grid(row=1, column =1,pady=10)
+nameEntry.grid(row=1, column=1, pady=10)
 yearEntry.grid(row=2, column=1, pady=10)
 monthEntry.grid(row=3, column=1, pady=10)
 dayEntry.grid(row=4, column=1, pady=10)
 
-Button(text="Calculate age and Zodiac Sign", fg="purple", command=calculateAge).grid(row=5, column=1, pady=10)
+Button(text="Calculate age and Zodiac Sign", fg="purple", command=calculate_age).grid(row=5, column=1, pady=10)
 
 window.mainloop()
